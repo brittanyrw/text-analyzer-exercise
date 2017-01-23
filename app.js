@@ -14,14 +14,13 @@ $(document).ready(function() {
 		event.preventDefault();
 		
 		//accept text that user has entered and turn it into an array
-		var userInput = $("#user-text").val();
+		var userInput = $("#user-text").val().toLowerCase();
 		
 		//remove punctuation to creat array for words only
 		var userInputWordsArray = userInput.replace(/[!()$&?.,]/g, "").split(" ");
-		console.log(userInputWordsArray.length);
+
 		//create an array with sentences
 		var userInputSentenceArray = userInput.split(/[.!?]/g);
-		console.log(userInputSentenceArray);
 		
 		//add text analyzer results to html
 		$(".js-word-count").text(userInputWordsArray.length);
@@ -38,15 +37,32 @@ $(document).ready(function() {
 
 function uniqueWordCount(userInputWordsArray) {
 	var wordCountObj = {};
-	
+	for (var i = 0; i < userInputWordsArray.length; i++) {
+		if (userInputWordsArray[i] in wordCountObj) {
+			wordCountObj[userInputWordsArray[i]] += 1;
+		} else {
+			wordCountObj[userInputWordsArray[i]] = 1;
+		}
+	}
+	return Object.keys(wordCountObj).length;
 }
 
 function avgWordLength(userInputWordsArray) {
-
+	var avgWordLength = userInputWordsArray.join("").length;
+	return (avgWordLength / userInputWordsArray.length).toFixed(2);
 }
 
 function avgSentenceLength(userInputSentenceArray) {
-}
 
+	var numberOfSentences = 0;
+	var numberOfWordsPerSentence = 0;
+	for (var i = 0; i < userInputSentenceArray.length; i++) {
+
+		if (userInputSentenceArray[i] != "") {
+			numberOfSentences++;
+			}
+		}
+
+	} 
 
 });
