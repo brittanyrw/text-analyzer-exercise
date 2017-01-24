@@ -54,15 +54,14 @@ function avgWordLength(userInputWordsArray) {
 
 function avgSentenceLength(userInputSentenceArray) {
 
-	var numberOfSentences = 0;
-	var numberOfWordsPerSentence = 0;
+	var numberOfSentences = userInputSentenceArray.length;
+	var sentenceLengthTotal = 0;
 	for (var i = 0; i < userInputSentenceArray.length; i++) {
 
 		if (userInputSentenceArray[i] != "") {
-			numberOfSentences++;
-			}
+			sentenceLengthTotal += userInputSentenceArray[i].length;
 		}
-
+		console.log(userInputSentenceArray);
 	} 
-
-});
+	return (sentenceLengthTotal/numberOfSentences).toFixed(2);
+};
