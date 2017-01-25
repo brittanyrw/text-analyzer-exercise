@@ -1,12 +1,3 @@
-// 1. Turn string into an array
-// 2. Calculate total word count
-// 3. Calculate unique word count - use object?
-// 4. Calcuate average word length
-// 5. Calculate average sentence length - look for . ? !
-// 6. Add numbers to text-report.
-// 7. Unhide classes for text-report when button is clicked.
-
-
 $(document).ready(function() {
 
 	$(".js-submit").click(function(event) { 
@@ -37,27 +28,33 @@ $(document).ready(function() {
 
 function uniqueWordCount(userInputWordsArray) {
 	var wordCountObj = {};
-	for (var i = 0; i < userInputWordsArray.length; i++) {
+	/*for (var i = 0; i < userInputWordsArray.length; i++) {
 		if (userInputWordsArray[i] in wordCountObj) {
 			wordCountObj[userInputWordsArray[i]] += 1;
 		} else {
 			wordCountObj[userInputWordsArray[i]] = 1;
 		}
+	}*/
+for (var i = 0; i < userInputWordsArray.length; i ++) {
+	var uniqueWordCountArray = [];
+	if (!(userInputWordsArray[i] in wordCountObj)) {
+		uniqueWordCountArray.push(userInputWordsArray[i])
 	}
-	return Object.keys(wordCountObj).length;
 }
+	return uniqueWordCountArray.length;
+	/*return Object.keys(wordCountObj).length;*/
+};
 
 function avgWordLength(userInputWordsArray) {
 	var avgWordLength = userInputWordsArray.join("").length;
 	return (avgWordLength / userInputWordsArray.length).toFixed(2);
-}
+};
 
 function avgSentenceLength(userInputSentenceArray) {
 
 	var numberOfSentences = userInputSentenceArray.length;
 	var sentenceLengthTotal = 0;
 	for (var i = 0; i < userInputSentenceArray.length; i++) {
-
 		if (userInputSentenceArray[i] != "") {
 			sentenceLengthTotal += userInputSentenceArray[i].length;
 		}
@@ -65,3 +62,10 @@ function avgSentenceLength(userInputSentenceArray) {
 	} 
 	return (sentenceLengthTotal/numberOfSentences).toFixed(2);
 };
+
+
+
+
+
+
+
